@@ -23,13 +23,13 @@ Vagrant.configure("2") do |config|
         vb.memory = MEM
       end
 
-#      gitlab.vm.provision "ansible" do |ansible|
-#        ansible.playbook = "roles/gitlab.yaml"
-#        ansible.extra_vars = {
-#           username: "#{ENV['USERNAME'] || `whoami`}",
-#            hostname: HOSTNAME
-#        }
-#      end
+      gitlab.vm.provision "ansible" do |ansible|
+        ansible.playbook = "ansible/gitlab.yaml"
+        ansible.extra_vars = {
+           #username: "#{ENV['USERNAME'] || `whoami`}",
+           hostname: HOSTNAME
+        }
+      end
 
       $script = <<-SCRIPT
       echo "configured networks: \n"
